@@ -210,9 +210,18 @@ importers:
       '@types/node':
         specifier: ^25.9.1
         version: 25.9.1
+      hono:
+        specifier: ^4.12.23
+        version: 4.12.23
+      neverthrow:
+        specifier: ^8.2.0
+        version: 8.2.0
       wrangler:
         specifier: ^4.94.0
         version: 4.94.0
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
     devDependencies:
       prettier:
         specifier: ^3.8.3
@@ -601,6 +610,12 @@ packages:
   '@poppinss/exception@1.2.3':
     resolution: {integrity: sha512-dCED+QRChTVatE9ibtoaxc+WkdzOSjYTKi/+uacHWIsfodVfpsueo3+DKpgU5Px8qXjgmXkSvhXvSCz3fnP9lw==}
 
+  '@rollup/rollup-linux-x64-gnu@4.60.4':
+    resolution: {integrity: sha512-Boiz5+MsaROEWDf+GGEwF8VMHGhlUoQMtIPjOgA5fv4osupqTVnJteQNKJwUcnUog2G55jYXH7KZFFiJe0TEzQ==}
+    cpu: [x64]
+    os: [linux]
+    libc: [glibc]
+
   '@sindresorhus/is@7.2.0':
     resolution: {integrity: sha512-P1Cz1dWaFfR4IR+U13mqqiGsLFf1KbayybWwdd2vfctdV6hDpUkgCY0nKOLLTMSoRd/jJNjtbqzf13K8DCCXQw==}
     engines: {node: '>=18'}
@@ -635,6 +650,10 @@ packages:
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
 
+  hono@4.12.23:
+    resolution: {integrity: sha512-eIaZ9qDgu7XV0pxOCrg7/WhnQ6Ivm22UcxhXx/A3dcbqbbYgBEkc6e/J/s7j2tS96zoB0S9VBdLwQNCWwUo4LA==}
+    engines: {node: '>=16.9.0'}
+
   kleur@4.1.5:
     resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
     engines: {node: '>=6'}
@@ -643,6 +662,10 @@ packages:
     resolution: {integrity: sha512-roRfxPq49OkuSeQsc43hRjSB1+HdHtDNKRwDEVk2hCjCBuBWxb5Wvwq88b0ULj6QVEJLN/+ZqF19M+h4VYJ/zg==}
     engines: {node: '>=22.0.0'}
     hasBin: true
+
+  neverthrow@8.2.0:
+    resolution: {integrity: sha512-kOCT/1MCPAxY5iUV3wytNFUMUolzuwd/VF/1KCx7kf6CutrOsTie+84zTGTpgQycjvfLdBBdvBvFLqFD2c0wkQ==}
+    engines: {node: '>=18'}
 
   path-to-regexp@6.3.0:
     resolution: {integrity: sha512-Yhpw4T9C6hPpgPeA28us07OJeqZ5EzQTkbfwuhsUg0c237RomFoETJgmp2sa3F/41gfLE6G5cqcYwznmeEeOlQ==}
@@ -738,6 +761,9 @@ packages:
 
   youch@4.1.0-beta.10:
     resolution: {integrity: sha512-rLfVLB4FgQneDr0dv1oddCVZmKjcJ6yX6mS4pU82Mq/Dt9a3cLZQ62pDBL4AUO+uVrCvtWz3ZFUL2HFAFJ/BXQ==}
+
+  zod@4.4.3:
+    resolution: {integrity: sha512-ytENFjIJFl2UwYglde2jchW2Hwm4GJFLDiSXWdTrJQBIN9Fcyp7n4DhxJEiWNAJMV1/BqWfW/kkg71UDcHJyTQ==}
 
 snapshots:
 
@@ -968,6 +994,9 @@ snapshots:
 
   '@poppinss/exception@1.2.3': {}
 
+  '@rollup/rollup-linux-x64-gnu@4.60.4':
+    optional: true
+
   '@sindresorhus/is@7.2.0': {}
 
   '@speed-highlight/core@1.2.15': {}
@@ -1016,6 +1045,8 @@ snapshots:
   fsevents@2.3.3:
     optional: true
 
+  hono@4.12.23: {}
+
   kleur@4.1.5: {}
 
   miniflare@4.20260521.0:
@@ -1029,6 +1060,10 @@ snapshots:
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
+
+  neverthrow@8.2.0:
+    optionalDependencies:
+      '@rollup/rollup-linux-x64-gnu': 4.60.4
 
   path-to-regexp@6.3.0: {}
 
@@ -1138,3 +1173,5 @@ snapshots:
       '@speed-highlight/core': 1.2.15
       cookie: 1.1.1
       youch-core: 0.3.3
+
+  zod@4.4.3: {}
