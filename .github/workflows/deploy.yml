@@ -12,9 +12,20 @@ jobs:
         name: Deploy to Cloudflare Workers
         environment: production
         steps:
-            - uses: actions/checkout@v4
+            - name: Checkout repository
+              uses: actions/checkout@v4
 
-            - name: Deploy
+            - name: Set up node
+              uses: actions/setup-node@v6
+              with:
+                  node-version: latest
+
+            - name: Set up pnpm
+              uses: pnpm/action-setup@v6
+              with:
+                  version: latest
+
+            - name: Deploy to 'Cloudflare Workers'
               uses: cloudflare/wrangler-action@v3
               with:
                   apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
