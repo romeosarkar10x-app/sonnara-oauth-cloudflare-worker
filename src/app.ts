@@ -26,6 +26,11 @@ function errorResponse(message: string) {
 
 app.get("/health", (ctx) => {
     const ip = ctx.req.header("CF-Connecting-IP");
+
+    if (ip === undefined) {
+        return textResponse("Hi!");
+    }
+
     return textResponse(`Hi ${ip}!`);
 });
 
