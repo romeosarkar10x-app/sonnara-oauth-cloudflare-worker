@@ -1,11 +1,17 @@
-import { env } from "cloudflare:workers";
 import { Hono } from "hono";
-import { corsHeaders } from "./constants";
 import { EnvResult } from "./lib/env";
 import { httpRequest } from "./utils/http-request";
 import { packageJSON } from "./utils/package-json";
+import { cors } from "hono/cors";
 
 export const app = new Hono();
+
+app.use(
+    "/",
+    cors({
+        allowMethods: ["POST", "GET", "OPTIONS"],
+    }),
+);
 
 function textResponse(message: string) {
     return new Response(message, {
@@ -33,6 +39,11 @@ app.get("/health", (ctx) => {
     }
 
     return textResponse(`Hi ${ip}!`);
+});
+
+app.get("/version", () => {
+    const version = packageJSON.version;
+    return textResponse(version);
 });
 
 app.get("/callback", async (ctx) => {
