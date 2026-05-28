@@ -56,10 +56,10 @@ app.get("/version", () => {
 });
 
 app.get("/callback", async (ctx) => {
-    const code = ctx.req.param("code");
+    const code = ctx.req.query("code");
 
     if (code === undefined) {
-        return errorResponse("Param 'code' is undefined");
+        return errorResponse("Query param 'code' is undefined");
     }
 
     const githubAccessTokenResult = await fetchGithubAccessToken(code);
