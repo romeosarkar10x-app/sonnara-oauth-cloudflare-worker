@@ -2,6 +2,7 @@ import { Hono } from "hono";
 import { packageJSON } from "./utils/package-json";
 import { cors } from "hono/cors";
 import { fetchGithubAccessToken } from "./utils/fetch-github-access-token";
+import { fetchUserProfile } from "./utils/fetch-user-profile";
 
 export const app = new Hono();
 
@@ -17,6 +18,15 @@ function textResponse(message: string) {
         status: 200,
         headers: {
             "Content-Type": "text/plain",
+        },
+    });
+}
+
+function jsonResponse(data: unknown) {
+    return new Response(JSON.stringify(data), {
+        status: 200,
+        headers: {
+            "Content-Type": "application/json",
         },
     });
 }
@@ -60,5 +70,15 @@ app.get("/callback", async (ctx) => {
     }
 
     const githubAccessToken = githubAccessTokenResult.value;
-    console.log("response:", JSON.stringify(githubAccessToken));
+    const userProfileResult = await fetchUserProfile(githubAccessToken.accessToken);
+
+    if (userProfileResult.isErr()) {
+        console.error(userProfileResult.error);
+        return errorResponse("Failed to get user profile");
+    }
+
+    const userProfile = userProfileResult.value;
+    console.log("User profile:", userProfile);
+
+    return jsonResponse(userProfile);
 });
