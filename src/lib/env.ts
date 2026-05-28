@@ -1,5 +1,5 @@
 import z from "zod";
-import { zodParseAsync } from "../utils/zodParseAsync";
+import { zodParseAsync } from "../utils/zod-parse-async";
 import { env } from "cloudflare:workers";
 
 const EnvSchema = z.object({

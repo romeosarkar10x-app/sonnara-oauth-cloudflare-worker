@@ -2,7 +2,8 @@ import { env } from "cloudflare:workers";
 import { Hono } from "hono";
 import { corsHeaders } from "./constants";
 import { EnvResult } from "./lib/env";
-import { httpRequest } from "./utils/httpRequest";
+import { httpRequest } from "./utils/http-request";
+import { packageJSON } from "./utils/package-json";
 
 export const app = new Hono();
 
