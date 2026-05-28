@@ -8,7 +8,7 @@
     "emeraldwalk.runonsave": {
         "commands": [
             {
-                "match": "\\.(js|ts|tsx|css|json|yml|yaml|html)$",
+                "match": "\\.(js|ts|tsx|css|json|jsonc|yml|yaml|html)$",
                 "cmd": "pnpx prettier --write ${file}"
             }
         ]
