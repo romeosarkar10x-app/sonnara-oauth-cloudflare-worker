@@ -1,0 +1,6 @@
+{
+    "$schema": "./node_modules/wrangler/config-schema.json",
+    "name": "sonnara-oauth-cloudflare-worker",
+    "main": "src/index.ts",
+    "compatibility_date": "2026-05-27",
+}
