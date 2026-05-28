@@ -1,8 +1,7 @@
 import { Hono } from "hono";
-import { EnvResult } from "./lib/env";
-import { httpRequest } from "./utils/http-request";
 import { packageJSON } from "./utils/package-json";
 import { cors } from "hono/cors";
+import { fetchGithubAccessToken } from "./utils/fetch-github-access-token";
 
 export const app = new Hono();
 
@@ -53,7 +52,7 @@ app.get("/callback", async (ctx) => {
         return errorResponse("Param 'code' is undefined");
     }
 
-    const githubAccessTokenResult = await getGithubAccessToken(code);
+    const githubAccessTokenResult = await fetchGithubAccessToken(code);
 
     if (githubAccessTokenResult.isErr()) {
         console.error(githubAccessTokenResult.error);
@@ -61,19 +60,5 @@ app.get("/callback", async (ctx) => {
     }
 
     const githubAccessToken = githubAccessTokenResult.value;
+    console.log("response:", JSON.stringify(githubAccessToken));
 });
-
-function getGithubAccessToken(code: string) {
-    return EnvResult.andThen((env) => {
-        const searchParams = new URLSearchParams();
-        searchParams.append("client_id", env.GITHUB_OAUTH_CLIENT_ID);
-        searchParams.append("client_secret", env.GITHUB_OAUTH_CLIENT_SECRET);
-        searchParams.append("code", code);
-
-        return httpRequest("https://github.com/login/oauth/access_token?" + searchParams.toString(), {
-            headers: {
-                Accept: "application/json",
-            },
-        });
-    });
-}
