@@ -26,6 +26,7 @@ export function fetchGithubAccessToken(code: string) {
                         scope: z.string(),
                         token_type: z.enum(["bearer"]),
                     })
+                    .describe("GithubAccessTokenResponseSchema")
                     .transform(({ access_token, scope }) => ({ accessToken: access_token, scope })),
             ),
         );
