@@ -23,6 +23,7 @@
     "type": "module",
     "dependencies": {
         "@types/node": "^25.9.1",
+        "cross-env": "^10.1.0",
         "hono": "^4.12.23",
         "neverthrow": "^8.2.0",
         "wrangler": "^4.94.0",
