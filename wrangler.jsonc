@@ -9,4 +9,7 @@
             "invocation_logs": true,
         },
     },
+    "vars": {
+        "GITHUB_OAUTH_CLIENT_ID": "Ov23liUJCa2S82J0MCqu",
+    },
 }
