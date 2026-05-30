@@ -1,11 +1,11 @@
 import z from "zod";
-import { EnvResult } from "../lib/env";
 import { httpRequest } from "./http-request";
 import { parseResponseJSON } from "./parse-response-json";
 import { zodParseAsync } from "./zod-parse-async";
+import { EnvResultAsync } from "../lib/env";
 
 export function fetchGithubAccessToken(code: string) {
-    return EnvResult.andThen((env) => {
+    return EnvResultAsync.andThen((env) => {
         const searchParams = new URLSearchParams();
         searchParams.append("client_id", env.GITHUB_OAUTH_CLIENT_ID);
         searchParams.append("client_secret", env.GITHUB_OAUTH_CLIENT_SECRET);

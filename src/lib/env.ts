@@ -7,4 +7,4 @@ const EnvSchema = z.object({
     GITHUB_OAUTH_CLIENT_SECRET: z.string().min(1),
 });
 
-export const EnvResult = zodParseAsync(EnvSchema)(env);
+export const EnvResultAsync = zodParseAsync(EnvSchema)(env);
