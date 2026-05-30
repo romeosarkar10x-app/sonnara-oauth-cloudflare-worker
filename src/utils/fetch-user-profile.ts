@@ -8,6 +8,7 @@ export function fetchUserProfile(githubToken: string) {
         headers: {
             Accept: "application/vnd.github+json",
             Authorization: `Bearer ${githubToken}`,
+            "User-Agent": "sonnara-oauth-cloudflare-worker",
         },
     })
         .andThen(parseResponseJSON)

@@ -14,6 +14,7 @@ export function fetchGithubAccessToken(code: string) {
         return httpRequest("https://github.com/login/oauth/access_token?" + searchParams.toString(), {
             headers: {
                 Accept: "application/json",
+                "User-Agent": "sonnara-oauth-cloudflare-worker",
             },
         });
     })
