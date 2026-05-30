@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.ts",
     "scripts": {
-        "dev": "wrangler dev",
+        "dev": "cross-env wrangler dev --var GIT_COMMIT_SHA:\"$(git rev-parse HEAD)\"",
         "type-check": "tsc",
         "format": "prettier --write \"**/*.{js,ts,tsx,css,scss,json,jsonc,yml,yaml,html}\"",
         "format:check": "prettier --check \"**/*.{js,ts,tsx,css,scss,json,jsonc,yml,yaml,html}\"",

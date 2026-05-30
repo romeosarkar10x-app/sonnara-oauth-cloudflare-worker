@@ -5,6 +5,7 @@ import { fetchGithubAccessToken } from "./utils/fetch-github-access-token";
 import { fetchUserProfile } from "./utils/fetch-user-profile";
 import { errorToString } from "./utils/error-to-string";
 import { toGenericError } from "./types/generic-error";
+import { EnvResultAsync } from "./lib/env";
 
 export const app = new Hono();
 
@@ -50,6 +51,17 @@ app.get("/health", (ctx) => {
 app.get("/version", () => {
     const version = packageJSON.version;
     return textResponse(version);
+});
+
+app.get("/git-commit-sha", async () => {
+    const envResult = await EnvResultAsync;
+
+    if (envResult.isOk()) {
+        const env = envResult.value;
+        return textResponse(env.GIT_COMMIT_SHA);
+    }
+
+    return errorResponse(toGenericError(envResult.error));
 });
 
 app.get("/callback", async (ctx) => {
